@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dar en Adopción - AdoptaUnAmigo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        .bg-orange {
+            background-color: #807c97;
+        }
+        .text-orange {
+            color: #000000e7;
+        }
+        .form-container {
+            background-color: #c5c5c5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-orange">
+    <div class="container">
+        <a class="navbar-brand" href="home.html">AdoptaUnAmigo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="busqueda.html">Filtrar Búsqueda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sobreNosotros.html">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="darEnAdopcion.html">Dar en Adopción</a>
+                </li>
+                <!-- Botón de Iniciar Sesión (visible solo cuando no está iniciada la sesión) -->
+                <li class="nav-item" id="loginButton">
+                    <a class="btn btn-light" href="iniciosesion.html">Iniciar Sesión</a>
+                </li>
+
+                <!-- Perfil del Usuario (visible solo cuando está iniciada la sesión) -->
+                <li class="nav-item dropdown d-none" id="userProfile">
+                    <a class="nav-link dropdown-toggle" href="#" id="perfilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="imagenes/perfil.jpg" alt="Foto de Perfil" class="rounded-circle me-2" width="30" height="30">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                        <li><span class="dropdown-item-text">Nombre de Usuario</span></li>
+                        <li><span class="dropdown-item-text">correo@gmail.com</span></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="configperfil.html">Configuración</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Simulación de inicio de sesión
+    function login() {
+        document.getElementById('loginButton').classList.add('d-none');  // Oculta el botón de Iniciar Sesión
+        document.getElementById('userProfile').classList.remove('d-none'); // Muestra el perfil del usuario
+    }
+
+    // Función para cerrar sesión
+    function logout() {
+        document.getElementById('userProfile').classList.add('d-none');  // Oculta el perfil del usuario
+        document.getElementById('loginButton').classList.remove('d-none'); // Muestra el botón de Iniciar Sesión
+    }
+
+    login();
+    
+</script>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Formulario de Dar en Adopción -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container">
+                <h2 class="text-center text-orange mb-4">Dar en Adopción</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="nombreAnimal" class="form-label">Nombre del Animal</label>
+                        <input type="text" id="nombreAnimal" class="form-control" placeholder="Nombre del animal">
+                    </div>
+                    <div class="mb-3">
+                        <label for="especie" class="form-label">Especie</label>
+                        <select id="especie" class="form-select">
+                            <option value="">Selecciona la especie</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="conejo">Conejo</option>
+                            <option value="ave">Ave</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tamaño" class="form-label">Tamaño</label>
+                        <select id="tamaño" class="form-select">
+                            <option value="">Selecciona el tamaño</option>
+                            <option value="pequeño">Pequeño</option>
+                            <option value="mediano">Mediano</option>
+                            <option value="grande">Grande</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edad" class="form-label">Edad</label>
+                        <input type="text" id="edad" class="form-control" placeholder="Edad del animal (ej. 2 años)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ubicacion" class="form-label">Ubicación</label>
+                        <input type="text" id="ubicacion" class="form-control" placeholder="Ciudad o región">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea id="descripcion" class="form-control" rows="4" placeholder="Descripción breve del animal y sus características"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-orange w-100">Publicar para Adopción</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-orange text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Enlaces de Interés</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Política de Privacidad</a></li>
+                    <li><a href="#" class="text-white">Términos de Uso</a></li>
+                    <li><a href="#" class="text-white">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contacto</h5>
+                <p>Teléfono: +57 301 8466720</p>
+                <p>Email: contacto@adoptaunamigo.com</p>
+                <p>Dirección: Calle Ficticia 123, Ciudad, País</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Síguenos</h5>
+                <a href="#" class="text-white me-3">Facebook</a>
+                <a href="#" class="text-white me-3">Twitter</a>
+                <a href="#" class="text-white">Instagram</a>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <p>&copy; 2023 AdoptaUnAmigo. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
