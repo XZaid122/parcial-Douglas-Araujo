@@ -48,13 +48,13 @@
         }
 
         // Redirigir al usuario a home.html al iniciar sesión
-        function redirectToHome() {
+        function redirectToindex() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             if (username && password) {
                 alert('Inicio de sesión exitoso. Redirigiendo...');
-                window.location.href = 'home.html'; // Redirigir a home.html
+                window.location.href = 'index.html'; // Redirigir a index.html
             } else {
                 alert('Por favor, completa todos los campos antes de continuar.');
             }
@@ -162,3 +162,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
