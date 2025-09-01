@@ -1,20 +1,14 @@
-# Usa una imagen base oficial de Node.js
-FROM node:18-alpine
+# Usa una imagen oficial de Nginx
+FROM nginx:alpine
 
-# Directorio de trabajo dentro del contenedor
-WORKDIR /app
+# Borra el contenido HTML por defecto de Nginx
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copia el package.json y package-lock.json para instalar dependencias
-COPY package*.json ./
+# Copia tu proyecto HTML al directorio de Nginx
+COPY . /usr/share/nginx/html
 
-# Instala las dependencias
-RUN npm install --production
+# Expone el puerto por donde correrá el sitio
+EXPOSE 80
 
-# Copia el resto del código de la app
-COPY . .
-
-# Expone el puerto que usa la app (ajústalo si usas otro)
-EXPOSE 3000
-
-# Comando para iniciar la app
-CMD ["npm", "start"]
+# Inicia Nginx en primer plano
+CMD ["nginx", "-g", "daemon off;"]
