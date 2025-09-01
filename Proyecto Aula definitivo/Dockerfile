@@ -1,15 +1,16 @@
-# Usa una imagen oficial de Nginx
 FROM nginx:alpine
 
-# Borra el contenido HTML por defecto de Nginx
+# Elimina los archivos por defecto de Nginx
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copia tu proyecto HTML al directorio de Nginx
+# Copia tu proyecto al directorio de Nginx
 COPY . /usr/share/nginx/html
 
-# Expone el puerto por donde correrá el sitio
-EXPOSE 80
+# Render expone el puerto 8080, así que lo redirigimos internamente
+EXPOSE 8080
 
-# Inicia Nginx en primer plano
+# Configura Nginx para escuchar en el puerto 8080
+RUN sed -i 's/80;/8080;/' /etc/nginx/conf.d/default.conf
+
+# Ejecuta Nginx
 CMD ["nginx", "-g", "daemon off;"]
-
